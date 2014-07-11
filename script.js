@@ -16,7 +16,7 @@ function setConnectionStatus(connectionId, successStatus) {
     statusDiv.innerHTML = 'Connection failed!'
   }
   else if (connectionId > 0) {
-    statusDiv.innerHTML = successStatus + ' with connection ID: ' + connectionId
+    statusDiv.innerHTML = successStatus + ' Connection ID: ' + connectionId
   }
 }
 
