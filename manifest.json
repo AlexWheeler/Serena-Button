@@ -10,7 +10,7 @@
   },
   "permissions":["serial"],
   "icons": {
-    "16": "calculator-16.png",
-    "128": "calculator-128.png"
+    "16": "button-16.png",
+    "128": "button-128.png"
   }
 }
