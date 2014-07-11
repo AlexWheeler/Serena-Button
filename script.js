@@ -8,7 +8,7 @@ function getPortPath(ports) {
     div.innerHTML = portPath;
 }
 
-//Sets connection status oh html
+//Sets connection status on window
 function setConnectionStatus(connectionId, successStatus) {
   var statusDiv = document.getElementById('status')
 
@@ -20,7 +20,7 @@ function setConnectionStatus(connectionId, successStatus) {
   }
 }
 
-//tell App what to on succesful connection to serial port
+//tell App what to do on succesful connection
 function onOpen(openData) {
   var connectionId = openData.connectionId;
   setConnectionStatus(connectionId, 'Succesfully connected');
@@ -32,6 +32,7 @@ function openPort() {
   chrome.serial.connect(connectedPort, onOpen);
 }
 
+//Runs shit!
 chrome.serial.getDevices(function(ports) {
   getPortPath(ports);
   openPort();
