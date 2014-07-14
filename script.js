@@ -1,11 +1,9 @@
 //sets global variable to check if connection failed by not returning a connectionId
 var connectionId = -1
 
-//gets the path of the serial port we want to connect to
-function getPortPath(ports) {
-    var div = document.getElementById('serial-port');
-    var portPath = ports[5].path
-    div.innerHTML = portPath;
+function sendData(connectionId) {
+  var buffer = new ArrayBuffer(1);
+  chrome.serial.send(connectionId, buffer, function(sendInfo) {console.log(sendInfo) })
 }
 
 //Sets connection status on window
@@ -24,12 +22,20 @@ function setConnectionStatus(connectionId, successStatus) {
 function onOpen(openData) {
   var connectionId = openData.connectionId;
   setConnectionStatus(connectionId, 'Succesfully connected');
+  sendData(connectionId);
 }
 
 //opens serial connection
 function openPort() {
   var connectedPort = document.getElementById('serial-port').innerHTML
   chrome.serial.connect(connectedPort, onOpen);
+}
+
+//gets the path of the serial port we want to connect to
+function getPortPath(ports) {
+    var div = document.getElementById('serial-port');
+    var portPath = ports[5].path
+    div.innerHTML = portPath;
 }
 
 //Runs shit!
