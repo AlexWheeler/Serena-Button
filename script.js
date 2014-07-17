@@ -1,9 +1,6 @@
 //sets global variable to check if connection failed by not returning a connectionId
 var connectionId = -1
 
-
-
-
 function sendData(connectionId, bytes) {
   var buffer = new ArrayBuffer(bytes);
   chrome.serial.send(connectionId, buffer, function(sendInfo) {console.log(sendInfo) })
