@@ -22,7 +22,7 @@ function setConnectionStatus(connectionId, successStatus) {
 function onOpen(openData) {
   var connectionId = openData.connectionId;
   setConnectionStatus(connectionId, 'Succesfully connected');
-  sendData(connectionId);
+  chrome.serial.onReceive.addListener(function(info) {console.log(info)})
 }
 
 //opens serial connection
